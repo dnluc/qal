@@ -1,0 +1,330 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "qal",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#types"
+		},
+		{
+		  "include": "#numbers"
+		},
+		{
+			"include": "#operators"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#characters"
+		},
+		{
+			"include": "#functionDeclaration"
+		},
+		{
+			"include": "#secuencia"
+		},
+		{
+			"include": "#tfecha"
+		},
+		{
+			"include": "#tpila"
+		},
+		{
+			"include": "#tcola"
+		},
+		{
+			"include": "#tlista"
+		},
+		{
+			"include": "#archivo"
+		},
+		{
+		  "include": "#variables"
+		},
+		{
+		  "include": "#undefined"
+		}
+
+	],
+	"repository": {    
+		"comments": {
+			"patterns": [
+			  {
+				"name": "comment.line.double-slash.espanol",
+				"match": "//.*$",
+				"patterns": [
+				  {
+					"name": "comment.keyword.todo",
+					"match": "\\bTODO:\\b"
+				  }
+				]
+			  },
+			  {
+				"name": "comment.block.espanol",
+				"begin": "/\\*",
+				"beginCaptures": {
+				  "0": {
+					"name": "punctuation.definition.comment.begin.espanol"
+				  }
+				},
+				"end": "\\*/",
+				"endCaptures": {
+				  "0": {
+					"name": "punctuation.definition.comment.end.espanol"
+				  }
+				},
+				"patterns": [
+				  {
+					"match": "[^*]+",
+					"name": "comment.block.content.espanol"
+				  },
+				  {
+					"match": "\\*[^/]",
+					"name": "comment.block.content.espanol"
+				  },
+				  {
+					"name": "comment.keyword.todo",
+					"match": "\\bTODO:\\b"
+				  }
+				]
+			  }
+			]
+		  },
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.qal",
+				"match": "(?i)\\b(ref|val|valor|si|entonces|hacer|sino|fsi|mientras|fmientras|para|hasta|en|fpara|segun|según|fsegun|fsegún|variables|constantes|tipos|mostrar|ingresar|devolver|com|verdadero|falso|repetir|que|globales)\\b"
+			}]
+		},
+		"types": {
+		"patterns": [
+			{
+			"name": "storage.type.espanol",
+			"match": "(?i)\\b(entero|enteros|real|reales|logico|lógico|lógicos|logicos|caracter|caracteres|tsecuencia|tfecha|tcola|tpila|tlista|reg|freg|arreglo|registro|de)\\b"
+			}
+		]
+	},"operators": {
+		"patterns": [
+		  {
+			"name": "keyword.operator.espanol",
+			"match": "(?i)(\\+|\\-|\\*|\\/|==|!=|<=|>=|<|>|y|o|no|%|\\//|\\|\\||existe|resto|div)"
+		  }
+		]
+	  },
+	  "strings": {
+		"patterns": [
+		  {
+			"name": "string.quoted.double.espanol",
+			"begin": "\"",
+			"beginCaptures": {
+			  "0": {
+				"name": "punctuation.definition.string.begin.espanol"
+			  }
+			},
+			"end": "\"",
+			"endCaptures": {
+			  "0": {
+				"name": "punctuation.definition.string.end.espanol"
+			  }
+			},
+			"patterns": [
+			  {
+				"match": "\\\\.",
+				"name": "constant.character.escape.espanol"
+			  }
+			]
+		  }
+		]
+	  },	 "characters": {
+		"patterns": [
+		  {
+			"name": "string.quoted.single.espanol",
+			"begin": "'",
+			"beginCaptures": {
+			  "0": {
+				"name": "punctuation.definition.character.begin.espanol"
+			  }
+			},
+			"end": "'",
+			"endCaptures": {
+			  "0": {
+				"name": "punctuation.definition.character.end.espanol"
+			  }
+			},
+			"patterns": [
+			  {
+				"match": "\\\\.",
+				"name": "constant.character.escape.espanol"
+			  }
+			]
+		  }
+		]
+	  } ,
+
+		"functionDeclaration": {
+		"patterns": [
+		  {
+			"name": "meta.function.declaration.espanol",
+			"begin": "(?i)\\bfuncion|procedimiento|algoritmo\\b",
+			"beginCaptures": {
+			  "0": {
+				"name": "keyword.declaration.function.begin.espanol"
+			  }
+			},
+			"end": "(?i)\\bffuncion|fprocedimiento|falgoritmo\\b",
+			"endCaptures": {
+			  "0": {
+				"name": "keyword.declaration.function.end.espanol"
+			  }
+			},
+			"patterns": [
+				{
+					"include": "#keywords"
+				},
+				{
+					"include": "#comments"
+				},
+				{
+					"include": "#types"
+				},
+
+				{
+				  "include": "#numbers"
+				},
+				{
+					"include": "#operators"
+				},
+				{
+					"include": "#strings"
+				},
+				{
+					"include": "#characters"
+				},
+				{
+					"include": "#functionDeclaration"
+				},
+				{
+					"include": "#secuencia"
+				},
+				{
+					"include": "#tfecha"
+				},
+				{
+					"include": "#tpila"
+				},
+				{
+					"include": "#tcola"
+				},
+				{
+					"include": "#tlista"
+				},
+				{
+					"include": "#archivo"
+				},
+				{
+				  "include": "#variables"
+				},
+				{
+					"include": "#undefined"
+				  },
+				{
+				"match": "\\bref\\b",
+				"name": "storage.modifier.espanol"
+			  },
+			  {
+				"match": "\\bval\\b",
+				"name": "storage.modifier.espanol"
+			  },
+			  {
+				"match": "\\w+",
+				"name": "variable.parameter.espanol"
+			  },
+			  {
+				"match": ":",
+				"name": "punctuation.separator.type.espanol"
+			  }
+			]
+		  }
+		]
+	  },
+	  "secuencia": {
+		"patterns": [
+		  {
+			"name": "entity.name.function.global.secuencia",
+			"match": "(?i)\\b(?:SLeerPrim|SFin|SLeersig|SPreparar|SEscribir|SMarcar)\\b"
+		  }
+		]
+	  },
+	  "tfecha": {
+		"patterns": [
+		  {
+			"name": "entity.name.function.global.tfecha",
+			"match": "(?i)\\b(?:Fválida|Fvalida|Fmayor|SumarDías|SumarDias|FconvertirFlegibleTfecha|FconvertirTfechaFlegible|FdiferenciaDías|FdiferenciaDias|FDia|FMes|FAnio)\\b"
+		  }
+		]
+	  },
+	  "tpila": {
+		"patterns": [
+		  {
+			"name": "entity.name.function.global.tpila",
+			"match": "(?i)\\b(?:pvacía|pvacia|pllena|Pcrear|PPoner|PSacar)\\b"
+		  }
+		]
+	  },
+	  "tcola": {
+		"patterns": [
+		  {
+			"name": "entity.name.function.global.tcola",
+			"match": "(?i)\\b(?:cvacía|cvacia|cllena|ccrear|cPoner|cSacar)\\b"
+		  }
+		]
+	  },
+	  "tlista": {
+		"patterns": [
+		  {
+			"name": "entity.name.function.global.tlista",
+			"match": "(?i)\\b(?:Lvacía|lvacia|lppio|linfo|lsig|lfin|Lllena|lcrear|linsertarppio|linsertarfin|lborrarppio|lborrarfin|lmodificar|linsertarOrden|lborrarActual|lbuscar)\\b"
+		  }
+		]
+	  },
+	  "archivo": {
+		"patterns": [
+		  {
+			"name": "entity.name.function.global.archivo",
+			"match": "(?i)\\b(?:abrir|buscar|leer|grabar|regrabar|borrar|cerrar)\\b"
+		  }
+		]
+	  },
+	  "variables": {
+		"patterns": [
+		  {
+			"name": "variable.espanol",
+			"match": "\\b[a-zA-Z_]\\w*\\b"
+		  }
+		]
+	  },
+	  "numbers": {
+		"patterns": [
+		  {
+			"name": "constant.numeric.espanol",
+			"match": "\\b\\d+(\\.\\d+)?\\b"
+		  }
+		]
+	  },
+		"undefined": {
+		  "patterns": [
+			{
+			  "name": "invalid.illegal.espanol",
+			  "match": "\\b\\w+\\b"
+			}
+		  ]
+		}
+	},
+	"scopeName": "source.qal"
+}

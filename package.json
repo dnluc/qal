@@ -1,0 +1,25 @@
+{
+  "name": "qal",
+  "displayName": "qal",
+  "description": "algoritmos",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "qal",
+      "aliases": ["qal", "qal"],
+      "extensions": [".qal",".algo",".pseudo"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "qal",
+      "scopeName": "source.qal",
+      "path": "./syntaxes/qal.tmLanguage.json"
+    }]
+  }
+}
